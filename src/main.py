@@ -1,33 +1,28 @@
-import json , os
+# src/main.py
+from utils.file_manager import load_json
+from controllers.submission_controller import SubmissionController
+import os
 
-def open_json(file_location):
-    
+def main():
+    # Caminho relativo para o arquivo JSON
     base_dir = os.path.dirname(os.path.abspath(__file__))
-    full_path = os.path.join(base_dir, file_location)
-    
-    with open(full_path, 'r') as file:
-        data = json.load(file)
-    return data
+    file_path = os.path.join(base_dir, '../data/kelvenserejo_data.json')
 
-if __name__ == '__main__':
-    
-    data = open_json('../data/kelvenserejo_data.json')
+    # Carrega os dados do JSON
+    data = load_json(file_path)
 
-    submissions = data.get('submissions', []) 
-
+    # Cria e carrega o controlador de submissões
+    controller = SubmissionController(data)
+    controller.load_submissions()
     
-    # Itera sobre as submissões e imprime as informações
-    for submission in submissions:
-        score = submission.get('score')
-        if score >= 1:
-            contest = submission.get('contest')
-            challenge = submission.get('challenge')
-            code = submission.get('code')
-            language = submission.get('language')
-            
-            print(f"Contest: {contest}")
-            print(f"Challenge: {challenge}")
-            print(f"Code:\n {code}")
-            print(f"Score: {score}")
-            print(f"Language: {language}")
-            print("-" * 50)  # Separador entre submissões
+    # Exibe as submissões
+    controller.display_submissions()
+
+    # Caminho para salvar os arquivos Python
+    save_directory = os.path.join(base_dir, '../data/hackerrank')
+    
+    # Salva as submissões em arquivos Python
+    controller.save_submissions_to_files(save_directory)
+
+if __name__ == "__main__":
+    main()
