@@ -94,11 +94,11 @@ deactivate
 
 As principais tecnologias utilizadas no projeto incluem:
 
-- [Python]<https://www.python.org/>
+- [Python] <https://www.python.org/>
 
 ## 🛠️ Tarefas
 
 - [ ] Postar soluções dos desafios de SQL
-- [ ] Capturar informações do desafio (liks , inputs, outputs).
+- [ ] Capturar informações do desafio (links , inputs, outputs).
 - [ ] Criar o readme.md tabelado para navegação entre os desafios.
 - [ ] Melhorar documentação.
