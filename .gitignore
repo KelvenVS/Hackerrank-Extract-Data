@@ -1,3 +1,5 @@
 __pycache__
 venv/
 data/hackerrank/*.py
+data/kelvenserejo_data.json
+data/kelvenserejo_data.json.gz
